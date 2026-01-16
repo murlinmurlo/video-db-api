@@ -1,4 +1,4 @@
-#  Cервис для управления базой данных видеофайлов.
+#  Cервис для управления базой данных видеофайлов
 
 ## Технологии
 - FastAPI
@@ -13,10 +13,12 @@
 ```bash
 git clone https://github.com/murlinmurlo/video-db-api.git
 cd video-db-api
+```
 
 ### 2. Сборка
 ```bash
-docker compose up --build 
+docker compose up --build
+```
 
 ## API Endpoints
 POST /videos - Добавить новое видео
