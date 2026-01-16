@@ -1,8 +1,21 @@
 from sqlalchemy import Column, Integer, String, DateTime, Interval
 from sqlalchemy.sql import func
-from .database import Base  # Исправлено: относительный импорт
+from .database import Base
 
 class Video(Base):
+    """
+    Модель видео.
+    
+    Attributes:
+        id: уникальный идентификатор
+        video_path: путь к видеофайлу
+        start_time: время начала записи
+        duration: длительность видео
+        camera_number: номер камеры
+        location: местоположение камеры
+        status: статус обработки видео
+        created_at: время создания записи
+    """
     __tablename__ = "videos"
 
     id = Column(Integer, primary_key=True, index=True)

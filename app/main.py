@@ -15,12 +15,12 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Video database API",
-    description="REST API сервис для работы с базой данных видео",
+    description="REST API сервис для работы с базой данных",
     version="1.0.0",
+    redoc_url=None,
     lifespan=lifespan
 )
 
-# Настройка CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -29,7 +29,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Подключение маршрутов
 app.include_router(routes.router)
 
 @app.get("/")
@@ -37,7 +36,6 @@ def read_root():
     return {
         "message": "Video database API",
         "docs": "/docs",
-        "redoc": "/redoc"
     }
 
 @app.get("/health")

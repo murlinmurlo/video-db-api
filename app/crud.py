@@ -4,6 +4,9 @@ from datetime import datetime
 from . import models, schemas
 
 def create_video(db: Session, video: schemas.VideoCreate):
+    """
+    Создать новую запись о видео в базе данных
+    """
     db_video = models.Video(**video.dict())
     db.add(db_video)
     db.commit()
@@ -11,6 +14,9 @@ def create_video(db: Session, video: schemas.VideoCreate):
     return db_video
 
 def get_video(db: Session, video_id: int):
+    """
+    Получить видео по ID
+    """
     return db.query(models.Video).filter(models.Video.id == video_id).first()
 
 def get_videos(
@@ -23,6 +29,9 @@ def get_videos(
     skip: int = 0,
     limit: int = 100
 ):
+    """
+    Получить список видео с поддержкой фильтрации
+    """
     query = db.query(models.Video)
     
     if status:
@@ -39,6 +48,9 @@ def get_videos(
     return query.offset(skip).limit(limit).all()
 
 def update_video_status(db: Session, video_id: int, status: str):
+    """
+    Обновить статус видео
+    """
     db_video = get_video(db, video_id)
     if db_video:
         db_video.status = status
